@@ -19,9 +19,10 @@ export class ProductoDetalleComponent implements OnInit {
       this.route.params
         .subscribe(
           (params) => {
-            this.id = params['id'];
+            this.id = Number(params.id);
+            this.producto = this.productService.getProduct(this.id);
           }
-        )
+        );
     }
     regresar() {
       this.router.navigate(['/productos']);

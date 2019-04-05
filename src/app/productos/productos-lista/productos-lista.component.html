@@ -1,8 +1,3 @@
-<!-- ALUMNO-LISTA.COMPONENT.HTML -->
-<button type="button" id="btnCrear" class="btn btn-success btn-lg mt-2" (click)="crearProducto()"> Crear Producto</button>
-
-<p *ngFor="let pr of productos" >{{pr.id}} - nombre: {{pr.nombre}}</p>
-
 <app-producto-item 
   *ngFor="let producto of productos">
-  </app-producto-item>
+</app-producto-item>

@@ -1,16 +1,18 @@
-<div class="media col-8 mt-2 border border-primary align-items-center ">
+<div class="media col-8 mt-2 border border-primary align-items-center card-space">
   <a class="media-left" href="#">
     <img class="rounded-circle" src="https://picsum.photos/50/50?image=0" alt="">
   </a>
 
 
-  <div class="media-body ">
-    <h5>aquí el nombre del producto</h5>
-    <p>Marca: marca del producto </p>
-    <p>Costo: precio del producto </p>
+  <div class="media-body">
+      <h5>{{producto.nombre}}</h5>
+      <p>Marca: {{producto.marca}} </p>
+      <p>Categoría: {{producto.categoria}} </p>
+      <p>Costo: ${{producto.precio}} </p>
+      <p>Existencias: {{producto.existencia}} </p>
   </div>
 
-  <div class="media-right ml-2">
+  <div class="media-right ml-2 checks">
     <!-- EL BOTON DE SELECCIONAR DEBE APARECER solo en /productos -->
     <div class="row">
       <label class="btn btn-primary active">

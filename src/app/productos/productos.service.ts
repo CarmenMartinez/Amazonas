@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Producto } from './Producto';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
   lastId = 1;
+  cambiaDato = new Subject<Producto[]>();
   productos: Producto[] = [
     new Producto(this.lastId ++, 'Producto1', 'patito1', 'laptop1', 20001, 101),
     new Producto(this.lastId ++, 'Producto2', 'patito2', 'laptop2', 20002, 102),
@@ -38,13 +40,13 @@ export class ProductosService {
       return false;
     }
     this.carrito.push(Object.assign({}, producto)); // creamos una copia
-    // this.notificarCambios();
+    this.notificarCambios();
     return true;
   }
 
-  // notificarCambios() {
-  //   this.cambiaDato.next(this.productos.slice());
-  // }
+  notificarCambios() {
+    this.cambiaDato.next(this.productos.slice());
+  }
 
   removeFromCart(id: number): boolean {
     const pos = this.carrito.findIndex(producto => producto.id === id);
