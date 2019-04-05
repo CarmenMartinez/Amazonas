@@ -1,3 +1,6 @@
 <app-producto-item 
-  *ngFor="let producto of productos">
+  *ngFor="let producto of productos"
+  [producto]=producto
+  [isCart]=isCart
+  (showItemDetail) = "showDetailList($event)">
 </app-producto-item>

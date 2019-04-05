@@ -34,13 +34,15 @@ export class ProductosService {
     return this.carrito;
   }
 
-  addToCart(producto: Producto): boolean {
-    const prod = this.productos.find(p => p.nombre.toUpperCase() === producto.nombre.toUpperCase());
-    if (prod) { // existe producto en el carrito
-      return false;
-    }
-    this.carrito.push(Object.assign({}, producto)); // creamos una copia
-    this.notificarCambios();
+  addToCart(producto: Producto[]): boolean {
+    producto.forEach(prod => {
+      const prodAux = this.productos.find(p => p.nombre.toUpperCase() === prod.nombre.toUpperCase());
+      if (prodAux) { // existe producto en el carrito
+        return false;
+      }
+      this.carrito.push(Object.assign({}, prod)); // creamos una copia
+      this.notificarCambios();
+    });
     return true;
   }
 
