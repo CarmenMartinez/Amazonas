@@ -1,0 +1,16 @@
+https://stackblitz.com/github/CarmenMartinez/Amazonas
+
+is703358
+
+Esta tarea fue una buena práctica para reforzar todo lo visto con Angular.
+Es muy similar, si no es que del todo, igual al ejercicio de alumnos que hemos visto en clase.
+Aunque debo confesar que puede llegar a volverse MUY confuso la relación entre productos, productos-lista,
+producto-item, productos-detalle, etc. Debe visualizarse muy bien cuál es la relación de cada componente,
+cuáles son los padres, y cuál debe llamar a cuál. Así, como la comunicación entre ellos, 
+que fue algo muy interesante, el ver cómo un componente se encargaba de obtener a información y la pasaba
+a través del html y el hijo la capturaba desde el archivo de .ts
+
+Es una tarea que lleva algo de tiempo hacerla, porque, como ya mencioné debe comprenderse muy bien la relación.
+Mi mayor confusión era encontrar propósito de producto item, si el detalle era algo muy similar.
+
+Es una muy buena práctica, ayudó bastante tener como base el ejercicio de alumnos.
