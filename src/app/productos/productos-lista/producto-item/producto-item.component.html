@@ -15,15 +15,27 @@
     <!-- EL BOTON DE SELECCIONAR DEBE APARECER solo en /productos -->
     <div class="row" *ngIf="!isCart">
       <label class="btn btn-primary active">
-        <input type="checkbox" name="" id="" autocomplete="off">
+        <input 
+        type="checkbox" 
+        name="chk_add" 
+        id="chk_add" 
+        autocomplete="off"
+        (click)="addItem()">
       </label>
     </div>
     <div class="row">
-      <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fas fa-search "></i></a>
+      <a name="" id="" 
+      class="btn btn-primary" 
+      role="button" 
+      (click)="showDetail()"><i class="fas fa-search "></i></a>
     </div>
     <!-- EL BOTON DE BORRAR SIGUIENTE SOLO DEBE APARECER EN CARRITO DE COMPRA -->
     <div class="row mt-1" *ngIf="isCart">
-      <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fas fa-trash-alt "></i></a>
+      <a name="" 
+      id="" 
+      class="btn btn-primary" 
+      role="button"
+      (click)="deleteItem"><i class="fas fa-trash-alt "></i></a>
     </div>
   </div>
 </div>

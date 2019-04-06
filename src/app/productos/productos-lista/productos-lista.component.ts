@@ -40,15 +40,15 @@ export class ProductosListaComponent implements OnInit {
       );
   }
 
-  addProductToCart(product) {
-    //Delete
-    if (typeof product === 'number') {
-      console.log(product);
-      this.productService.removeFromCart(product);
+  addProductsToCart(producto: Producto) {
+    if (typeof producto === 'number') {
+      console.log(producto);
+      this.productService.removeFromCart(producto);
       //this.getTotal();
     } else {
       this.cantidad ++;
-      this.carrito.push(product);
+      this.carrito.push(producto);
+      this.productService.addToCart(this.carrito);
     }
 
   }
