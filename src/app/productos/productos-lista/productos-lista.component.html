@@ -1,6 +1,6 @@
 
 <h3 class="element-align">{{titulo}}</h3>
-
+<hr>
 <button 
   *ngIf="!isCart" 
   routerLink="/carrito" 
@@ -8,6 +8,7 @@
   class="btn btn-success element-align" >
   Añadir al carrito
 </button>
+<h5 *ngIf="isCart" class="element-align">Total: ${{total}}</h5>
 
 <app-producto-item 
   *ngFor="let producto of productos"

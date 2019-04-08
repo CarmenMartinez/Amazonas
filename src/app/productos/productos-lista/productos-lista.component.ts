@@ -33,9 +33,9 @@ export class ProductosListaComponent implements OnInit {
       this.productsInCart();
     } else {
       this.isCart = true;
-      console.log('carrito');
       this.productos = this.productService.getCart();
       this.titulo = 'Carrito de Compras';
+      this.getTotal();
     }
     this.subscript = this.productService.cambiaDato
       .subscribe(
@@ -47,6 +47,13 @@ export class ProductosListaComponent implements OnInit {
 
   changeCart(producto: Producto) {
     this.productService.addToCart(producto);
+  }
+
+  getTotal() {
+    this.total = 0;
+    this.productos.forEach(p => {
+      this.total += p.precio;
+    });
   }
 
   productsInCart() {
