@@ -42,12 +42,16 @@ export class ProductosService {
     } else {
       this.carrito.push(Object.assign({}, producto)); // creamos una copia
       console.log(this.carrito);
-      this.notificarCambios();
+      this.notificarCambiosP();
     }
   }
 
-  notificarCambios() {
+  notificarCambiosP() {
     this.cambiaDato.next(this.productos.slice());
+  }
+
+  notificarCambiosC() {
+    this.cambiaDato.next(this.carrito.slice());
   }
 
   removeFromCart(id: number): boolean {
@@ -55,9 +59,9 @@ export class ProductosService {
     const pos = this.carrito.findIndex(prod => prod.id === id);
     if (pos >= 0) {
       this.carrito.splice(pos, 1);
+      this.notificarCambiosC();
       return true;
     }
-    //delete this.productos[id];
     return false;
   }
 }
