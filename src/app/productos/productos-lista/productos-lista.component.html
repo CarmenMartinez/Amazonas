@@ -1,12 +1,13 @@
-<!-- <button 
-  *ngIf="!isCarrito" 
+
+<h3 class="element-align">{{titulo}}</h3>
+
+<button 
+  *ngIf="!isCart" 
   routerLink="/carrito" 
   type="button" 
-  class="btn btn-success" 
-  (click)="addProductsToCart()">
+  class="btn btn-success element-align" >
   Añadir al carrito
-</button> -->
-
+</button>
 
 <app-producto-item 
   *ngFor="let producto of productos"
@@ -16,4 +17,12 @@
   (showItemDetail) = "showDetailList($event)">
 </app-producto-item>
 
-<!-- (add) = "addProductToCart($event)" -->
+<br>
+
+<button 
+  *ngIf="!isCart" 
+  routerLink="/carrito" 
+  type="button" 
+  class="btn btn-success element-align" >
+  Añadir al carrito
+</button>

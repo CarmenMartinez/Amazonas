@@ -14,6 +14,7 @@ export class ProductosListaComponent implements OnInit {
   carrito: Producto[];
   isCart: boolean;
   cantidad: number;
+  titulo: string;
   total: number;
 
   private subscript: Subscription;
@@ -27,10 +28,12 @@ export class ProductosListaComponent implements OnInit {
     if (this.router.url === '/productos') {
       this.isCart = false;
       this.productos = this.productService.getProducts();
+      this.titulo = 'Lista de Productos';
     } else {
       this.isCart = true;
       console.log('carrito');
       this.productos = this.productService.getCart();
+      this.titulo = 'Carrito de Compras';
     }
 
     console.log('init' + this.productos);
