@@ -29,8 +29,11 @@ export class ProductosListaComponent implements OnInit {
       this.productos = this.productService.getProducts();
     } else {
       this.isCart = true;
+      console.log('carrito');
       this.productos = this.productService.getCart();
     }
+
+    console.log('init' + this.productos);
 
     this.subscript = this.productService.cambiaDato
       .subscribe(
@@ -40,21 +43,21 @@ export class ProductosListaComponent implements OnInit {
       );
   }
 
-  addProductsToCart(producto: Producto) {
-    if (typeof producto === 'number') {
-      console.log(producto);
-      this.productService.removeFromCart(producto);
-      //this.getTotal();
-    } else {
-      this.cantidad ++;
-      this.carrito.push(producto);
-      this.productService.addToCart(this.carrito);
-    }
+  changeCart(producto: Producto) {
+    // if (typeof producto === 'number') {
+    //console.log(producto);
+    //   this.productService.removeFromCart(producto);
+    //   //this.getTotal();
+    // } else {
+    //this.carrito.push(producto);
+    this.productService.addToCart(producto);
+      //this.productService.addToCart(this.carrito);
+    //}
 
   }
-  pushCart() {
-    this.productService.addToCart(this.carrito);
-  }
+  // pushCart() {
+  //   this.productService.addToCart(this.carrito);
+  // }
 
   showDetailList(producto: Producto) {
     this.router.navigate([producto.id], {relativeTo: this.route});

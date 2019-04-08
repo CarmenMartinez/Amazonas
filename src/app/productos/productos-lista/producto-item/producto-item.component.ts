@@ -10,20 +10,21 @@ import { Producto } from '../../Producto';
 export class ProductoItemComponent implements OnInit {
   @Input() producto: Producto;
   @Input() isCart: boolean;
-  @Output() add = new EventEmitter();
+  @Output() addOrRemoveItem = new EventEmitter();
   @Output() showItemDetail = new EventEmitter();
+  //@Output() addOrRemove = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addItem() {
-    this.add.emit(this.producto);
+  addOrRemove() {
+    this.addOrRemoveItem.emit(this.producto);
   }
 
   deleteItem() {
-    this.add.emit(this.producto.id);
+    this.addOrRemoveItem.emit(this.producto.id);
   }
 
   showDetail() {

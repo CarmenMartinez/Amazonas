@@ -1,17 +1,19 @@
-<button 
+<!-- <button 
   *ngIf="!isCarrito" 
   routerLink="/carrito" 
   type="button" 
   class="btn btn-success" 
   (click)="addProductsToCart()">
   Añadir al carrito
-</button>
+</button> -->
 
 
 <app-producto-item 
   *ngFor="let producto of productos"
   [producto]=producto
   [isCart]=isCart
+  (addOrRemoveItem) = changeCart($event);
   (showItemDetail) = "showDetailList($event)">
 </app-producto-item>
 
+<!-- (add) = "addProductToCart($event)" -->

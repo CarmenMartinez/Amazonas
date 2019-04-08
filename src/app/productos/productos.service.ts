@@ -31,19 +31,19 @@ export class ProductosService {
   }
 
   getCart() {
-    return this.carrito;
+    return this.carrito.slice();
   }
 
-  addToCart(producto: Producto[]): boolean {
-    producto.forEach(prod => {
-      const prodAux = this.productos.find(p => p.nombre.toUpperCase() === prod.nombre.toUpperCase());
-      if (prodAux) { // existe producto en el carrito
-        return false;
-      }
-      this.carrito.push(Object.assign({}, prod)); // creamos una copia
+  addToCart(producto: Producto) {
+    const prodAux = this.carrito.find(p => p.nombre.toUpperCase() === producto.nombre.toUpperCase());
+    if (prodAux) { // existe producto en el carrito
+      //this.removeFromCart(Number(prodAux.id));
+      //console.log('remove' + this.carrito);
+    } else {
+      this.carrito.push(Object.assign({}, producto)); // creamos una copia
+      console.log(this.carrito);
       this.notificarCambios();
-    });
-    return true;
+    }
   }
 
   notificarCambios() {
@@ -51,11 +51,13 @@ export class ProductosService {
   }
 
   removeFromCart(id: number): boolean {
-    const pos = this.carrito.findIndex(producto => producto.id === id);
+    console.log('r' + this.carrito);
+    const pos = this.carrito.findIndex(prod => prod.id === id);
     if (pos >= 0) {
       this.carrito.splice(pos, 1);
       return true;
     }
-    delete this.productos[id];
+    //delete this.productos[id];
+    return false;
   }
 }

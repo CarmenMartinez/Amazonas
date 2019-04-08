@@ -17,10 +17,10 @@
       <label class="btn btn-primary active">
         <input 
         type="checkbox" 
-        name="chk_add" 
-        id="chk_add" 
+        name="chk_add_{{producto.id}}" 
+        id="chk_add_{{producto.id}}" 
         autocomplete="off"
-        (click)="addItem()">
+        (click)="addOrRemove()">
       </label>
     </div>
     <div class="row">
@@ -35,7 +35,7 @@
       id="" 
       class="btn btn-primary" 
       role="button"
-      (click)="deleteItem"><i class="fas fa-trash-alt "></i></a>
+      (click)="deleteItem()"><i class="fas fa-trash-alt "></i></a>
     </div>
   </div>
 </div>
