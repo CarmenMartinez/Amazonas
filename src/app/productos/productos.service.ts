@@ -39,6 +39,7 @@ export class ProductosService {
     if (prodAux) { // existe producto en el carrito
       this.removeFromCart(Number(prodAux.id));
       console.log('remove' + this.carrito);
+      this.notificarCambiosP();
     } else {
       this.carrito.push(Object.assign({}, producto)); // creamos una copia
       console.log(this.carrito);
