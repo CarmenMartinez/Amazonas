@@ -31,6 +31,7 @@ export class ProductosListaComponent implements OnInit {
       this.productos = this.productService.getProducts();
       this.titulo = 'Lista de Productos';
       this.productsInCart();
+      this.getQty();
     } else {
       this.isCart = true;
       this.productos = this.productService.getCart();
@@ -48,6 +49,12 @@ export class ProductosListaComponent implements OnInit {
   changeCart(producto: Producto) {
     this.productService.addToCart(producto, this.isCart);
     this.getTotal();
+    this.getQty();
+  }
+
+  getQty() {
+    this.carrito = this.productService.getCart();
+    this.cantidad = this.carrito.length;
   }
 
   getTotal() {

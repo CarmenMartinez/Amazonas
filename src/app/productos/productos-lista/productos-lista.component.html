@@ -9,6 +9,8 @@
   Añadir al carrito
 </button>
 <h5 *ngIf="isCart" class="element-align">Total: ${{total}}</h5>
+<h5 *ngIf="!isCart" class="element-align">Elementos Seleccionados: {{cantidad}}</h5>
+
 
 <app-producto-item 
   *ngFor="let producto of productos"
