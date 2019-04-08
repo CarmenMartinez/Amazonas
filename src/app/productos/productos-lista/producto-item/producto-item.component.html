@@ -20,7 +20,8 @@
         name="chk_add_{{producto.id}}" 
         id="chk_add_{{producto.id}}" 
         autocomplete="off"
-        (click)="addOrRemove()">
+        (click)="addOrRemove()"
+        [checked] = prodInCart>
       </label>
     </div>
     <div class="row">

@@ -10,9 +10,9 @@ import { Producto } from '../../Producto';
 export class ProductoItemComponent implements OnInit {
   @Input() producto: Producto;
   @Input() isCart: boolean;
+  @Input() prodInCart: boolean;
   @Output() addOrRemoveItem = new EventEmitter();
   @Output() showItemDetail = new EventEmitter();
-  //@Output() addOrRemove = new EventEmitter();
 
   constructor() { }
 
@@ -21,10 +21,6 @@ export class ProductoItemComponent implements OnInit {
 
   addOrRemove() {
     this.addOrRemoveItem.emit(this.producto);
-  }
-
-  deleteItem() {
-    this.addOrRemoveItem.emit(this.producto.id);
   }
 
   showDetail() {

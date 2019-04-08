@@ -37,8 +37,8 @@ export class ProductosService {
   addToCart(producto: Producto) {
     const prodAux = this.carrito.find(p => p.nombre.toUpperCase() === producto.nombre.toUpperCase());
     if (prodAux) { // existe producto en el carrito
-      //this.removeFromCart(Number(prodAux.id));
-      //console.log('remove' + this.carrito);
+      this.removeFromCart(Number(prodAux.id));
+      console.log('remove' + this.carrito);
     } else {
       this.carrito.push(Object.assign({}, producto)); // creamos una copia
       console.log(this.carrito);

@@ -11,9 +11,10 @@ import { Producto } from '../Producto';
 })
 export class ProductosListaComponent implements OnInit {
   productos: Producto[];
-  carrito: Producto[];
+  carrito: Producto[] = [];
   isCart: boolean;
   cantidad: number;
+  prodInCart: boolean[] = [];
   titulo: string;
   total: number;
 
@@ -29,15 +30,13 @@ export class ProductosListaComponent implements OnInit {
       this.isCart = false;
       this.productos = this.productService.getProducts();
       this.titulo = 'Lista de Productos';
+      this.productsInCart();
     } else {
       this.isCart = true;
       console.log('carrito');
       this.productos = this.productService.getCart();
       this.titulo = 'Carrito de Compras';
     }
-
-    console.log('init' + this.productos);
-
     this.subscript = this.productService.cambiaDato
       .subscribe(
         (arregloProductos: Producto[]) => {
@@ -47,20 +46,17 @@ export class ProductosListaComponent implements OnInit {
   }
 
   changeCart(producto: Producto) {
-    // if (typeof producto === 'number') {
-    //console.log(producto);
-    //   this.productService.removeFromCart(producto);
-    //   //this.getTotal();
-    // } else {
-    //this.carrito.push(producto);
     this.productService.addToCart(producto);
-      //this.productService.addToCart(this.carrito);
-    //}
-
   }
-  // pushCart() {
-  //   this.productService.addToCart(this.carrito);
-  // }
+
+  productsInCart() {
+    this.carrito = this.productService.getCart();
+    this.carrito.forEach(prodC => {
+      if (this.productos.find(p => p.nombre.toUpperCase() === prodC.nombre.toUpperCase())) {
+        this.prodInCart[prodC.id] = true;
+      }
+    });
+  }
 
   showDetailList(producto: Producto) {
     this.router.navigate([producto.id], {relativeTo: this.route});

@@ -13,6 +13,7 @@
   *ngFor="let producto of productos"
   [producto]=producto
   [isCart]=isCart
+  [prodInCart]=prodInCart[producto.id]
   (addOrRemoveItem) = changeCart($event);
   (showItemDetail) = "showDetailList($event)">
 </app-producto-item>
