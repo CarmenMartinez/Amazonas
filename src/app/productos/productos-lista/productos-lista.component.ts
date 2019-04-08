@@ -46,7 +46,8 @@ export class ProductosListaComponent implements OnInit {
   }
 
   changeCart(producto: Producto) {
-    this.productService.addToCart(producto);
+    this.productService.addToCart(producto, this.isCart);
+    this.getTotal();
   }
 
   getTotal() {

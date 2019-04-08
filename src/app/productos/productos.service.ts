@@ -34,33 +34,29 @@ export class ProductosService {
     return this.carrito.slice();
   }
 
-  addToCart(producto: Producto) {
+  addToCart(producto: Producto, isCart: boolean) {
     const prodAux = this.carrito.find(p => p.nombre.toUpperCase() === producto.nombre.toUpperCase());
     if (prodAux) { // existe producto en el carrito
-      this.removeFromCart(Number(prodAux.id));
+      this.removeFromCart(Number(prodAux.id), isCart);
       console.log('remove' + this.carrito);
-      this.notificarCambiosP();
     } else {
       this.carrito.push(Object.assign({}, producto)); // creamos una copia
       console.log(this.carrito);
-      this.notificarCambiosP();
     }
-  }
-
-  notificarCambiosP() {
-    this.cambiaDato.next(this.productos.slice());
   }
 
   notificarCambiosC() {
     this.cambiaDato.next(this.carrito.slice());
   }
 
-  removeFromCart(id: number): boolean {
+  removeFromCart(id: number, isCart: boolean): boolean {
     console.log('r' + this.carrito);
     const pos = this.carrito.findIndex(prod => prod.id === id);
     if (pos >= 0) {
       this.carrito.splice(pos, 1);
-      this.notificarCambiosC();
+      if (isCart) {
+        this.notificarCambiosC();
+      }
       return true;
     }
     return false;
